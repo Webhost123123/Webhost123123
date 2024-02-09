@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Blind Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Ace Poker Timer</h1>
+        <img src="logo.png" alt="logo">
+
+    </header>
+    <div id="gap"></div>
+    <div id="displaysContainer">
+        <h3 class = "displaytext">Blinds</h3>
+        <div id="blindDisplay">Blinds: 0/0</div>
+        <h3 class = "displaytext">Time remaining</h3>
+        <div id="timerDisplay">00:00</div>
+    </div>
+
+    <audio id="endBlindSound" src="countdown.mp3" preload="auto"></audio>
+    <section id="buttoncol">
+    <div id="gap"></div>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+    <div id="menugap"></div>
+    <button onclick="previousBlind()">Previous Blind</button>
+    <button onclick="nextBlind()">Next Blind</button>
+    <div id="menugap"></div>
+    <button onclick="showEditMenu()">Edit</button>
+    </section>
+
+    <div id="editMenuModal" style="display:none; position:fixed; z-index:1; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgb(0,0,0,0.4);">
+        <div style="background-color:#fefefe; margin:auto; padding:20px; border:1px solid #888; width:80%; max-width:500px;">
+            <div>
+                <h3>Edit Blinds</h3>
+                <div id="blindsList">
+                <!-- Blinds list will be populated dynamically -->
+                </div>
+                <div id="addBlindForm" style="display:none;">
+                    <input type="number" id="newSmallBlind" placeholder="Small Blind">
+                    <input type="number" id="newBigBlind" placeholder="Big Blind">
+                    <button onclick="addBlind()">Add</button>
+                    <button onclick="cancelAddBlind()">Cancel</button>
+                </div>
+                <button onclick="addBlind()">Add Blind</button>
+                
+            </div>
+            <div>
+                <h3>Edit Timer</h3>
+                <label for="timerDuration">Timer Duration</label>
+                <input type="number" id="timerDuration" value="5">
+                <button onclick="updateTimerDuration()">Update</button>
+            </div>
+            <button onclick="hideEditMenu()">Close</button>
+        </div>
+    </div>
+
+    <script src="timer.js"></script>
+</body>
+</html>
